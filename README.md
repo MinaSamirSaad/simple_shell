@@ -1,4 +1,4 @@
-# Simple Shell
+# Our Own Version Of Simple Shell
 
 ### It is an imitation of the Unix shell built in the C language
 
