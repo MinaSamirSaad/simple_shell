@@ -1,6 +1,6 @@
 # Simple Shell
 
-### It is an imitation of the Unix shell built in the C language
+### It is an imitation of the Unix shell built in with C language
 
 
 ## Authors
