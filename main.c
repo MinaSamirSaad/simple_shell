@@ -8,8 +8,7 @@
 int main(void)
 {
 
-/*a function that helps me to keep the shell open*/
-infinite_loop();
-
-return (EXIT_SUCCESS);
+	/*a function that helps me to keep the shell open*/
+	infinite_loop();
+	return (EXIT_SUCCESS);
 }
