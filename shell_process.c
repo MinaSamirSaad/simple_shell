@@ -12,6 +12,7 @@ void shell_process(char *string, char **arguments, char **paths, char *breaks)
 	string = get_string();
 	arguments = split(string, breaks);
 
+	/* check \n enter character */
 	/* builtin check from here */
 	if (_strcmp(arguments[0], "exit") == 0)
 	{

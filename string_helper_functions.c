@@ -46,7 +46,7 @@ char *_strcopy(char *str)
 	length = _strlen(str);
 	/* 1 to null character */
 	strcopy = malloc(length + 1);
-	while (i < legnth && str[i])
+	while (i < length && str[i])
 	{
 		strcopy[i] = str[i];
 		i++;
