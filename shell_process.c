@@ -9,19 +9,13 @@
  */
 void shell_process(char *string, char **arguments, char **paths, char *breaks)
 {
-	string = get_string();
-	arguments = split(string, breaks);
+string = get_string();
+arguments = split(string, breaks);
 
-	/* check \n enter character */
-	/* builtin check from here */
-	if (_strcmp(arguments[0], "exit") == 0)
-	{
-		free(string);
-		free(arguments);
-		free_array_of_pointers(paths);
-		exit(EXIT_SUCCESS);
-	}
-	before_execution(arguments, paths);
-	free(string);
-	free(arguments);
+/* check \n enter character */
+/* handle EOF && ctrl+c*/
+check_exit(arguments, string, paths);
+/* builtin check from here */
+before_execution(arguments, paths);
+free_all(arguments, string, NULL);
 }

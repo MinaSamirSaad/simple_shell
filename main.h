@@ -29,6 +29,7 @@ char *get_string(void);
 
 /* string helper functions 2*/
 char **split(char *string, char *breaks);
+int _atoi(char *s);
 
 /* environment helper functions*/
 char **get_all_paths(void);
@@ -41,5 +42,11 @@ void execution(char **arguments);
 /* array helper functions*/
 char **copy_array_of_strings(char **str);
 void free_array_of_pointers(char **array);
+
+/* built in checker */
+void check_exit(char **arguments, char *string, char **paths);
+
+/*free helper functions */
+void free_all(char **arguments, char *string, char **paths);
 
 #endif
