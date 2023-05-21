@@ -10,12 +10,22 @@
 void shell_process(char *string, char **arguments, char **paths, char *breaks)
 {
 string = get_string();
-arguments = split(string, breaks);
 
 /* check \n enter character */
+if (*string == '\n')
+{
+free(string);
+return;
+}
+arguments = split(string, breaks);
+
 /* handle EOF && ctrl+c*/
 check_exit(arguments, string, paths);
-/* builtin check from here */
+/* builtin checker */
+if (check_builtin(arguments) == -1)
+{
 before_execution(arguments, paths);
+}
 free_all(arguments, string, NULL);
 }
+

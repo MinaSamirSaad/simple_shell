@@ -45,6 +45,8 @@ void free_array_of_pointers(char **array);
 
 /* built in checker */
 void check_exit(char **arguments, char *string, char **paths);
+int check_builtin(char **arguments);
+int print_env(char **arguments);
 
 /*free helper functions */
 void free_all(char **arguments, char *string, char **paths);
