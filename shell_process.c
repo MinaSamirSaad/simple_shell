@@ -1,31 +1,39 @@
 #include "main.h"
 
 /**
- * shell_process - core of shell programe process
- * @string: input string to shell
- * @arguments: splitted string acc to breaks
+ * sh - core of shell programe process
+ * @str: input string to shell
+ * @args: splitted string acc to breaks
  * @paths: splitted path from environment
- * @breaks: user to split the string
+ * @p_cnt: number of proccess
+ * @p_path: the program path
  */
-void shell_process(char *string, char **arguments, char **paths, char *breaks)
+void sh(char *str, char **args, char **paths, int p_cnt, char *p_path)
 {
-string = get_string();
-
-/* check \n enter character */
-if (*string == '\n')
+char *breaks = " \t\r\n\a";
+char *clean_string;
+str = get_string();
+/*check EOF*/
+if (str == NULL)
 {
-free(string);
+write(STDOUT_FILENO, "\n", 1);
+free_all(args, str, paths);
+exit(EXIT_SUCCESS);
+}
+clean_string = cleanStr(str);
+/*check \n && comment(#)*/
+if (clean_string == NULL)
+{
+free(str);
 return;
 }
-arguments = split(string, breaks);
+args = split(str, breaks);
 
-/* handle EOF && ctrl+c*/
-check_exit(arguments, string, paths);
+check_exit(args, str, paths);
 /* builtin checker */
-if (check_builtin(arguments) == -1)
+if (check_builtin(args) == -1)
 {
-before_execution(arguments, paths);
+before_execution(args, paths, p_cnt, p_path);
 }
-free_all(arguments, string, NULL);
+free_all(args, str, NULL);
 }
-

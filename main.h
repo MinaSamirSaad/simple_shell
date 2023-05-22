@@ -9,12 +9,13 @@
 
 /* global variable to access environment */
 extern char **environ;
-
-void infinite_loop(void);
+__attribute__ ((unused))static char *program_path;
+void infinite_loop(char *program_path);
 
 /* function to read stander input */
 /* and split arguments && execution the commands*/
-void shell_process(char *string, char **arguments, char **paths, char *breaks);
+void sh(char *str, char **args, char **paths, int p_cnt, char *p_path);
+
 
 /* checker helper functions*/
 int check_full_path(char *argument);
@@ -30,13 +31,14 @@ char *get_string(void);
 /* string helper functions 2*/
 char **split(char *string, char *breaks);
 int _atoi(char *s);
+char *cleanStr(char *str);
 
 /* environment helper functions*/
 char **get_all_paths(void);
 char *get_env(char *string);
 
 /*execution functions*/
-void before_execution(char **arguments, char **paths);
+void before_execution(char **arguments, char **paths,  int p_cnt,char *p_path);
 void execution(char **arguments);
 
 /* array helper functions*/
@@ -50,5 +52,11 @@ int print_env(char **arguments);
 
 /*free helper functions */
 void free_all(char **arguments, char *string, char **paths);
+
+/*error functions*/
+void execve_error(char *command, int proccess_number, char *program_path);
+/*number helper functions*/
+void print_num(unsigned int n);
+
 
 #endif

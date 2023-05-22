@@ -1,4 +1,4 @@
-#include"main.h"
+#include "main.h"
 /**
  * split - function that split string  into arguments
  * @string: the string to split
@@ -7,30 +7,28 @@
  */
 char **split(char *string, char *breaks)
 {
-	char *argument;
-	char **arguments;
-	int position = 0;
+char *argument;
+char **arguments;
+int position = 0;
 
-	/* no need to intialize breaks as it sent to it*/
-	/* breaks = " \t\r\n\a"; */
-	/* may cause error so need to check if it full */
-	arguments = malloc(64 * sizeof(char *));
-	if (!arguments)
-	{
-		perror("Error:failed to allocate memory");
-		exit(EXIT_FAILURE);
-	}
-	/*start split the string*/
-	argument = strtok(string, breaks);
-	while (argument != NULL)
-	{
-		arguments[position++] = argument;
-		argument = strtok(NULL, breaks);
-		/* NULL here meaning that continue in the same string*/
-	}
-	/*the final argument should be NULL for execve function*/
-	arguments[position] = NULL;
-	return (arguments);
+/* may cause error so need to check if it full */
+arguments = malloc(64 * sizeof(char *));
+if (!arguments)
+{
+perror("Error:failed to allocate memory");
+exit(EXIT_FAILURE);
+}
+/*start split the string*/
+argument = strtok(string, breaks);
+while (argument != NULL)
+{
+arguments[position++] = argument;
+argument = strtok(NULL, breaks);
+/* NULL here meaning that continue in the same string*/
+}
+/*the final argument should be NULL for execve function*/
+arguments[position] = NULL;
+return (arguments);
 }
 
 /**
@@ -61,4 +59,20 @@ if (val != 0 && !(s[i] >= '0' && s[i] <= '9'))
 return (val);
 }
 return (val);
+}
+/**
+ * cleanStr - clean string from new line and comment
+ * @str: string from user or pipe to clean
+ * Return: NULL if new line or string without comment
+ */
+
+char *cleanStr(char *str)
+{
+char *src = str;
+if (*str == '\n')
+{
+return (NULL);
+}
+strtok(str, "#");
+return (src);
 }

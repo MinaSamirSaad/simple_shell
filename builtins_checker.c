@@ -56,7 +56,7 @@ return (-1);
  * @arguments: splitted string acc to breaks
  * Return: EXIT_SUCCESS = 0
  */
-int print_env(char **arguments)
+int print_env(__attribute__((unused)) char **arguments)
 {
 int length;
 char **temp = environ;
@@ -70,4 +70,3 @@ temp++;
 }
 return (EXIT_SUCCESS);
 }
-
