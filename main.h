@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <signal.h>
 
 /* global variable to access environment */
 
@@ -41,7 +42,7 @@ char *get_env(char *string);
 
 /*execution functions*/
 void before_execution(char **arguments, char **paths, int p_cnt, char *p_path);
-void execution(char **arguments);
+int execution(char **arguments);
 
 /* array helper functions*/
 char **copy_array_of_strings(char **str);
@@ -50,10 +51,12 @@ void free_array_of_pointers(char **array);
 /* built in checker */
 void check_exit(char **arguments, char *string, char **paths);
 int check_builtin(char **arguments);
-int print_env(char **arguments);
+
 /* built in functions*/
 int set_env_variable(char **arguments);
 int unset_env_variable(char **arguments);
+int _cd(char **arguments);
+int print_env(char **arguments);
 
 /*free helper functions */
 void free_all(char **arguments, char *string, char **paths);

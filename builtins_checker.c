@@ -32,10 +32,10 @@ exit(EXIT_SUCCESS);
 int check_builtin(char **arguments)
 {
 /*list of builtin environments to compare with argument[0]*/
-char *builtin_str[] = {"env", "setenv", "unsetenv"};
+char *builtin_str[] = {"env", "setenv", "unsetenv", "cd"};
 /*pointers to builtin functions*/
 int (*builtin_func[])(char **) = {&print_env,
-&set_env_variable, &unset_env_variable};
+&set_env_variable, &unset_env_variable, &_cd};
 int i;
 /*length of builtin functions*/
 int num_builtins = (sizeof(builtin_str) / sizeof(char *));
