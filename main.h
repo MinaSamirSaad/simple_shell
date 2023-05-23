@@ -8,14 +8,16 @@
 #include <sys/wait.h>
 
 /* global variable to access environment */
+
+static __attribute__((unused))char *program_path;
+
 extern char **environ;
-__attribute__ ((unused))static char *program_path;
+
 void infinite_loop(char *program_path);
 
 /* function to read stander input */
 /* and split arguments && execution the commands*/
 void sh(char *str, char **args, char **paths, int p_cnt, char *p_path);
-
 
 /* checker helper functions*/
 int check_full_path(char *argument);
@@ -38,7 +40,7 @@ char **get_all_paths(void);
 char *get_env(char *string);
 
 /*execution functions*/
-void before_execution(char **arguments, char **paths,  int p_cnt,char *p_path);
+void before_execution(char **arguments, char **paths, int p_cnt, char *p_path);
 void execution(char **arguments);
 
 /* array helper functions*/
@@ -49,6 +51,9 @@ void free_array_of_pointers(char **array);
 void check_exit(char **arguments, char *string, char **paths);
 int check_builtin(char **arguments);
 int print_env(char **arguments);
+/* built in functions*/
+int set_env_variable(char **arguments);
+int unset_env_variable(char **arguments);
 
 /*free helper functions */
 void free_all(char **arguments, char *string, char **paths);
@@ -57,6 +62,5 @@ void free_all(char **arguments, char *string, char **paths);
 void execve_error(char *command, int proccess_number, char *program_path);
 /*number helper functions*/
 void print_num(unsigned int n);
-
 
 #endif

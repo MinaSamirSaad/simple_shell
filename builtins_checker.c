@@ -32,11 +32,10 @@ exit(EXIT_SUCCESS);
 int check_builtin(char **arguments)
 {
 /*list of builtin environments to compare with argument[0]*/
-char *builtin_str[] = {
-"env"};
+char *builtin_str[] = {"env", "setenv", "unsetenv"};
 /*pointers to builtin functions*/
-int (*builtin_func[])(char **) = {
-&print_env};
+int (*builtin_func[])(char **) = {&print_env,
+&set_env_variable, &unset_env_variable};
 int i;
 /*length of builtin functions*/
 int num_builtins = (sizeof(builtin_str) / sizeof(char *));
@@ -49,24 +48,4 @@ return ((*builtin_func[i])(arguments));
 }
 }
 return (-1);
-}
-
-/**
- * print_env - print the environments
- * @arguments: splitted string acc to breaks
- * Return: EXIT_SUCCESS = 0
- */
-int print_env(__attribute__((unused)) char **arguments)
-{
-int length;
-char **temp = environ;
-
-while (temp && *temp)
-{
-length = _strlen(*temp);
-write(STDOUT_FILENO, *temp, length);
-write(STDOUT_FILENO, "\n", 1);
-temp++;
-}
-return (EXIT_SUCCESS);
 }

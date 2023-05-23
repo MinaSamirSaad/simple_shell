@@ -9,10 +9,9 @@ char **split(char *string, char *breaks)
 {
 char *argument;
 char **arguments;
-int position = 0;
+int position = 0, size = _strlen(string);
 
-/* may cause error so need to check if it full */
-arguments = malloc(64 * sizeof(char *));
+arguments = malloc(size * sizeof(char *));
 if (!arguments)
 {
 perror("Error:failed to allocate memory");

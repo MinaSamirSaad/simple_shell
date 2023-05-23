@@ -6,7 +6,6 @@
  * @argv: the arguments
  * Return: EXIT_SUCCESS = 0 if successful
  */
-
 int main(__attribute__((unused)) int argc, char **argv)
 {
 program_path = argv[0];
