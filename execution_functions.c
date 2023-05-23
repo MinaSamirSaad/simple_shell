@@ -15,7 +15,6 @@ if (pid == 0)
 {
 /*child proccess*/
 execve(arguments[0], arguments, NULL);
-exit();
 }
 else if (pid == -1)
 {
