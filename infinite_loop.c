@@ -1,5 +1,16 @@
 #include "main.h"
-
+/**
+ * catch_signal - signal handler
+ * @number: the number of signal
+ */
+void catch_signal(int number)
+{
+if (number == SIGINT)
+{
+write(STDOUT_FILENO, "\n", 1);
+exit(EXIT_SUCCESS);
+}
+}
 /**
  * infinite_loop - function to make the shell always open
  * inside the loop we get string, split it and execute it
@@ -11,7 +22,7 @@ int proccess_counter = 1;
 char *string = NULL;
 char **arguments = NULL;
 char **paths = get_all_paths();
-
+signal(SIGINT, catch_signal);
 /*Read input from pipe*/
 /* non interactive */
 if (!isatty(STDIN_FILENO))

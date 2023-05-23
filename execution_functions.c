@@ -3,8 +3,9 @@
  * execution - function that Execute external command
  * @arguments: the arguments of command
  * the arguments[0] is the path of program to Execute
+ * Return: status of execution
  */
-void execution(char **arguments)
+int execution(char **arguments)
 {
 pid_t pid;
 int status;
@@ -20,7 +21,6 @@ else if (pid == -1)
 {
 /*failed to fork proccess*/
 perror("Error: Cannot fork");
-exit(EXIT_FAILURE);
 }
 else
 {
@@ -28,9 +28,9 @@ else
 if (waitpid(pid, &status, 0) == -1)
 {
 perror("Error: waitpid failed");
-exit(EXIT_FAILURE);
 }
 }
+return (status);
 }
 
 /**
