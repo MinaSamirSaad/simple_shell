@@ -69,7 +69,7 @@ free(fullpath);
 else
 {
 execve_error(arguments[0], p_cnt, p_path);
-return (EXIT_FAILURE);
+return (127);
 }
 }
 
