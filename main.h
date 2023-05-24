@@ -19,7 +19,7 @@ void infinite_loop(char *program_path);
 
 /* function to read stander input */
 /* and split arguments && execution the commands*/
-void sh(char *str, char **paths, int p_cnt, char *p_path);
+void sh(char *str, char **args, char **paths, int p_cnt, char *p_path);
 
 /* checker helper functions*/
 int check_full_path(char *argument);
