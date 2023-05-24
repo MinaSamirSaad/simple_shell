@@ -19,7 +19,6 @@ void infinite_loop(char *program_path)
 {
 int proccess_counter = 1;
 char *string = NULL;
-char **arguments = NULL;
 char **paths = get_all_paths();
 signal(SIGINT, catch_signal);
 /*Read input from pipe*/
@@ -27,7 +26,7 @@ signal(SIGINT, catch_signal);
 if (!isatty(STDIN_FILENO))
 {
 /* read stander input && split arguments && execution the commands*/
-sh(string, arguments, paths, proccess_counter, program_path);
+sh(string, paths, proccess_counter, program_path);
 free_array_of_pointers(paths);
 exit(EXIT_SUCCESS);
 }
@@ -38,7 +37,7 @@ while (1)
 write(STDOUT_FILENO, "m$ ", 3);
 fflush(stdout);
 /* read stander input && split arguments && execution the commands*/
-sh(string, arguments, paths, proccess_counter, program_path);
+sh(string, paths, proccess_counter, program_path);
 proccess_counter++;
 }
 }
