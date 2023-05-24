@@ -8,7 +8,7 @@
 int execution(char **arguments)
 {
 pid_t pid;
-int status = 0;
+int status = 1;
 
 /*using fork to create child proccess*/
 pid = fork();
