@@ -101,4 +101,5 @@ free(pwd);
 return (EXIT_SUCCESS);
 }
 }
+return (EXIT_SUCCESS);
 }
