@@ -11,5 +11,5 @@ if (n / 10)
 print_num(n / 10);
 
 num = n % 10 + '0';
-write(1, &num, 1);
+write(STDERR_FILENO, &num, 1);
 }

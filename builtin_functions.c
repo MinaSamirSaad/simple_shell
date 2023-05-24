@@ -81,6 +81,11 @@ arguments[1] = get_env("HOME");
 if (arguments[1][0] == '-' && arguments[1][1] == '\0')
 {
 arguments[1] = get_env("OLDPWD");
+if (!arguments[1])
+{
+write(STDERR_FILENO, &"cd: OLDPWD not set\n", 19);
+return (EXIT_FAILURE);
+}
 }
 old_pwd = getcwd(NULL, 0);
 setenv("OLDPWD", old_pwd, 1);
