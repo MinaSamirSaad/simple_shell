@@ -41,4 +41,3 @@ before_execution(args, paths, p_cnt, p_path);
 }
 free_all(args, str, NULL);
 }
-	
