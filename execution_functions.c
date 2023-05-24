@@ -32,11 +32,6 @@ perror("Error: waitpid failed");
 return (EXIT_FAILURE);
 }
 }
-if (WIFEXITED(status))
-{
-int exit_status = WEXITSTATUS(status);
-return (exit_status);
-}
 return (status);
 }
 
