@@ -11,7 +11,7 @@ char *argument;
 char **arguments;
 int position = 0, size = _strlen(string);
 
-arguments = malloc(size * sizeof(char *));
+arguments = malloc((size + 1) * sizeof(char *));
 if (!arguments)
 {
 perror("Error:failed to allocate memory");

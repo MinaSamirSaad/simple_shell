@@ -10,7 +10,7 @@
  */
 void sh(char *str, char **args, char **paths, int p_cnt, char *p_path)
 {
-char *breaks = " ";
+char *breaks = " \t\r\n\a";
 char *clean_string;
 str = get_string();
 /*check EOF*/
