@@ -28,7 +28,11 @@ free(str);
 return;
 }
 args = split(str, breaks);
-
+if (args[0] == NULL)
+{
+free_all(args, str, NULL);
+return;
+}
 check_exit(args, str, paths);
 /* builtin checker */
 if (check_builtin(args) == -1)
