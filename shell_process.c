@@ -12,7 +12,7 @@
 int sh(char *str, char **args, char **paths, int p_cnt, char *p_path)
 {
 int status = 1;
-char *breaks = " \t\r\n\a";
+char *breaks = " ";
 char *clean_string;
 str = get_string();
 /*check EOF*/
@@ -27,7 +27,7 @@ clean_string = cleanStr(str);
 if (clean_string == NULL)
 {
 free(str);
-return (status);
+return (EXIT_SUCCESS);
 }
 args = split(str, breaks);
 if (args[0] == NULL)
