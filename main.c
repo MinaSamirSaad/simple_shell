@@ -8,7 +8,6 @@
  */
 int main(__attribute__((unused)) int argc, char **argv)
 {
-program_path = argv[0];
 /*a function that helps me to keep the shell open*/
 infinite_loop(argv[0]);
 return (EXIT_SUCCESS);

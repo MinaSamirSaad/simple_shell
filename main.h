@@ -11,8 +11,6 @@
 #include <sys/types.h>
 /* global variable to access environment */
 
-static __attribute__((unused))char *program_path;
-
 extern char **environ;
 
 void infinite_loop(char *program_path);

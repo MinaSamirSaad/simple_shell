@@ -71,6 +71,5 @@ if (*str == '\n')
 {
 return (NULL);
 }
-str[_strlen(str) - 1] = '\0';
 return (strtok(str, "#"));
 }
