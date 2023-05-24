@@ -42,11 +42,13 @@ return (status);
  */
 void before_execution(char **arguments, char **paths, int p_cnt, char *p_path)
 {
-int status;
+	struct stat fileStat;
 char *fullpath = NULL;
 
-status = check_full_path(arguments[0]);
-if (status == 0)
+
+if (check_full_path(arguments[0]) == 0)
+execution(arguments);
+else if (stat(arguments[0], &fileStat) == 0)
 execution(arguments);
 else
 {

@@ -7,7 +7,8 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <signal.h>
-
+#include <sys/stat.h>
+#include <sys/types.h>
 /* global variable to access environment */
 
 static __attribute__((unused))char *program_path;
