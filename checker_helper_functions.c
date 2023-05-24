@@ -7,7 +7,7 @@
  */
 int check_full_path(char *argument)
 {
-	return (access(argument, F_OK));
+	return (access(argument, X_OK));
 }
 
 /**

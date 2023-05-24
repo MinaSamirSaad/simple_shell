@@ -7,8 +7,7 @@ void catch_signal(int number)
 {
 if (number == SIGINT)
 {
-write(STDOUT_FILENO, "\n", 1);
-exit(EXIT_SUCCESS);
+write(STDOUT_FILENO, "\nm$ ", 4);
 }
 }
 /**
