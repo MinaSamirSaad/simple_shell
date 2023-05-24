@@ -13,11 +13,11 @@
 
 extern char **environ;
 
-void infinite_loop(char *program_path);
+int infinite_loop(char *program_path);
 
 /* function to read stander input */
 /* and split arguments && execution the commands*/
-void sh(char *str, char **args, char **paths, int p_cnt, char *p_path);
+int sh(char *str, char **args, char **paths, int p_cnt, char *p_path);
 
 /* checker helper functions*/
 int check_full_path(char *argument);
@@ -40,7 +40,7 @@ char **get_all_paths(void);
 char *get_env(char *string);
 
 /*execution functions*/
-void before_execution(char **arguments, char **paths, int p_cnt, char *p_path);
+int before_execution(char **arguments, char **paths, int p_cnt, char *p_path);
 int execution(char **arguments);
 
 /* array helper functions*/

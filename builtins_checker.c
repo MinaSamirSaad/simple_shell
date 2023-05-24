@@ -9,12 +9,9 @@
 void check_exit(char **arguments, char *string, char **paths)
 {
 int arg1_result;
-int i = 0;
-while (arguments[i])
+if (_strcmp("exit", arguments[0]) == 0)
 {
-if (_strcmp("exit", arguments[i]) == 0)
-{
-if (arguments[i + 1])
+if (arguments[1])
 {
 arg1_result = _atoi(arguments[1]);
 free_all(arguments, string, paths);
@@ -22,8 +19,6 @@ exit(arg1_result);
 }
 free_all(arguments, string, paths);
 exit(EXIT_SUCCESS);
-}
-i++;
 }
 }
 

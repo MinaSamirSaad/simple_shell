@@ -7,9 +7,11 @@
  * @paths: splitted path from environment
  * @p_cnt: number of proccess
  * @p_path: the program path
+ * Return: status of execution
  */
-void sh(char *str, char **args, char **paths, int p_cnt, char *p_path)
+int sh(char *str, char **args, char **paths, int p_cnt, char *p_path)
 {
+int status = 1;
 char *breaks = " \t\r\n\a";
 char *clean_string;
 str = get_string();
@@ -25,19 +27,21 @@ clean_string = cleanStr(str);
 if (clean_string == NULL)
 {
 free(str);
-return;
+return (status);
 }
 args = split(str, breaks);
 if (args[0] == NULL)
 {
 free_all(args, str, NULL);
-return;
+return (status);
 }
 check_exit(args, str, paths);
 /* builtin checker */
-if (check_builtin(args) == -1)
+status = check_builtin(args);
+if (status == -1)
 {
-before_execution(args, paths, p_cnt, p_path);
+status = before_execution(args, paths, p_cnt, p_path);
 }
 free_all(args, str, NULL);
+return (status);
 }

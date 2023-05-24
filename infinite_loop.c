@@ -15,9 +15,11 @@ exit(EXIT_SUCCESS);
  * infinite_loop - function to make the shell always open
  * inside the loop we get string, split it and execute it
  * @program_path: the program path
+ * Return: status of execution
  */
-void infinite_loop(char *program_path)
+int infinite_loop(char *program_path)
 {
+int status = 1;
 char **args = NULL;
 int proccess_counter = 1;
 char *string = NULL;
@@ -28,9 +30,9 @@ signal(SIGINT, catch_signal);
 if (!isatty(STDIN_FILENO))
 {
 /* read stander input && split arguments && execution the commands*/
-sh(string, args, paths, proccess_counter, program_path);
+status = sh(string, args, paths, proccess_counter, program_path);
 free_array_of_pointers(paths);
-exit(EXIT_SUCCESS);
+exit(status);
 }
 /*Read input from user*/
 /* interactive */
@@ -39,7 +41,8 @@ while (1)
 write(STDOUT_FILENO, "m$ ", 3);
 fflush(stdout);
 /* read stander input && split arguments && execution the commands*/
-sh(string, args, paths, proccess_counter, program_path);
+status = sh(string, args, paths, proccess_counter, program_path);
 proccess_counter++;
 }
+return (status);
 }

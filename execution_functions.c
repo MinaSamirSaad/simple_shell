@@ -8,7 +8,7 @@
 int execution(char **arguments)
 {
 pid_t pid;
-int status;
+int status = 0;
 
 /*using fork to create child proccess*/
 pid = fork();
@@ -21,6 +21,7 @@ else if (pid == -1)
 {
 /*failed to fork proccess*/
 perror("Error: Cannot fork");
+return (EXIT_FAILURE);
 }
 else
 {
@@ -28,7 +29,13 @@ else
 if (waitpid(pid, &status, 0) == -1)
 {
 perror("Error: waitpid failed");
+return (EXIT_FAILURE);
 }
+}
+if (WIFEXITED(status))
+{
+int exit_status = WEXITSTATUS(status);
+return (exit_status);
 }
 return (status);
 }
@@ -39,27 +46,32 @@ return (status);
  * @paths: paths splitted
  * @p_cnt: number of proccess
  * @p_path: the program path
+ * Return: status of execution
  */
-void before_execution(char **arguments, char **paths, int p_cnt, char *p_path)
+int before_execution(char **arguments, char **paths, int p_cnt, char *p_path)
 {
+int status = 1;
 char *fullpath = NULL;
 
 if (access(arguments[0], F_OK) == 0)
-execution(arguments);
+status = execution(arguments);
 else if (check_full_path(arguments[0]) == 0)
-execution(arguments);
+status = execution(arguments);
 else
 {
 fullpath = check_small_path(arguments[0], paths);
 if (fullpath != NULL)
 {
 arguments[0] = fullpath;
-execution(arguments);
+status = execution(arguments);
 free(fullpath);
 }
 else
 {
 execve_error(arguments[0], p_cnt, p_path);
+return (EXIT_FAILURE);
 }
 }
+
+return (status);
 }
