@@ -33,7 +33,7 @@ args = split(str, breaks);
 if (args[0] == NULL)
 {
 free_all(args, str, NULL);
-return (status);
+return (EXIT_SUCCESS);
 }
 check_exit(args, str, paths);
 /* builtin checker */
