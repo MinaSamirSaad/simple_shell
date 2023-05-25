@@ -23,27 +23,25 @@ int status = 1;
 char **args = NULL;
 int proccess_counter = 1;
 char *string = NULL;
+size_t string_size = 0;
 char **paths = get_all_paths();
 
 signal(SIGINT, catch_signal);
-/*Read input from pipe*/
-/* non interactive */
-if (!isatty(STDIN_FILENO))
-{
-/* read stander input && split arguments && execution the commands*/
-status = sh(string, args, paths, proccess_counter, program_path);
-free_array_of_pointers(paths);
-exit(status);
-}
-/*Read input from user*/
-/* interactive */
-while (1)
-{
+
+/*print prompt if user run the program*/
+if (isatty(STDIN_FILENO) != 0)
 write(STDOUT_FILENO, "m$ ", 3);
+/* if not or get the command from pipe*/
+/*it will start execute the command*/
+while ((_getline(&string, &string_size)))
+{
 fflush(stdout);
-/* read stander input && split arguments && execution the commands*/
+/* split arguments && execution the commands*/
 status = sh(string, args, paths, proccess_counter, program_path);
 proccess_counter++;
+/*check non interactive mood*/
+if (isatty(STDIN_FILENO) != 0)
+write(STDOUT_FILENO, "m$ ", 3);
 }
 return (status);
 }

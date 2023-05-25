@@ -29,7 +29,6 @@ int _strlen(char *str);
 int _strcmp(char *str1, char *str2);
 char *_strconcat(char *str1, char *str2);
 char *_strcopy(char *str);
-char *get_string(void);
 
 /* string helper functions 2*/
 char **split(char *string, char *breaks);

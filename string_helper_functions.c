@@ -82,20 +82,3 @@ full_str[(i + str1_length)+1] = str2[i];
 full_str[str1_length + str2_length + 1] = '\0';
 return (full_str);
 }
-
-/**
- * get_string - function to get the string from stander input
- * Return: the string from stander input
- */
-char *get_string()
-{
-char *string = NULL;
-size_t string_size = 0;
-
-if (_getline(&string, &string_size) == EOF)
-{
-free(string);
-return (NULL);
-}
-return (string);
-}
