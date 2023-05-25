@@ -25,8 +25,6 @@ int proccess_counter = 1;
 char *string = NULL;
 char **paths = get_all_paths();
 
-/*change lang variable */
-set_environ(6, "LANG", "en_US.UTF-8");
 signal(SIGINT, catch_signal);
 /*Read input from pipe*/
 /* non interactive */
