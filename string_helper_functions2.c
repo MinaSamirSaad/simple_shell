@@ -67,7 +67,9 @@ return (val);
 
 char *cleanStr(char *str)
 {
-if (*str == '\n')
+/* handle new line in begining */
+/* handle # in begining */
+if (*str == '\n' || *str == '#')
 {
 return (NULL);
 }
