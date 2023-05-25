@@ -17,7 +17,8 @@ extern char **environ;
 int infinite_loop(char *program_path);
 
 /* and split arguments && execution the commands*/
-int sh(char *str, char **args, char **paths, int p_cnt, char *p_path);
+void sh(char *str, char **args, char **paths, int p_cnt, char *p_path,
+int *st);
 
 /* checker helper functions*/
 int check_full_path(char *argument);
@@ -40,15 +41,15 @@ char **get_all_paths(void);
 char *get_env(char *string);
 
 /*execution functions*/
-int before_execution(char **arguments, char **paths, int p_cnt, char *p_path);
-int execution(char **arguments);
+void before_exec(char **args, char **paths, int p_cnt, char *p_path, int *st);
+void execution(char **arguments, int *st);
 
 /* array helper functions*/
 char **copy_array_of_strings(char **str);
 void free_array_of_pointers(char **array);
 
 /* built in checker */
-void check_exit(char **arguments, char *string, char **paths);
+void check_exit(char **arguments, char *string, char **paths, int *st);
 int check_builtin(char **arguments);
 
 /* built in functions*/

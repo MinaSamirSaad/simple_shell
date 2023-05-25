@@ -36,7 +36,7 @@ write(STDOUT_FILENO, "m$ ", 3);
 while ((_getline(&string, &string_size)))
 {
 /* split arguments && execution the commands*/
-status = sh(string, args, paths, proccess_counter, program_path);
+sh(string, args, paths, proccess_counter, program_path, &status);
 proccess_counter++;
 fflush(stdout);
 /*check non interactive mood*/

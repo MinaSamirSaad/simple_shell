@@ -5,8 +5,9 @@
  * @string: input string to shell
  * @arguments: splitted string acc to breaks
  * @paths: splitted path from environment
+ * @st: status of execution
  */
-void check_exit(char **arguments, char *string, char **paths)
+void check_exit(char **arguments, char *string, char **paths, int *st)
 {
 int arg1_result;
 if (_strcmp("exit", arguments[0]) == 0)
@@ -18,7 +19,7 @@ free_all(arguments, string, paths);
 exit(arg1_result);
 }
 free_all(arguments, string, paths);
-exit(EXIT_SUCCESS);
+exit(*st);
 }
 }
 
