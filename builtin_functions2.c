@@ -75,7 +75,8 @@ if (arguments[1] != NULL && arguments[2] != NULL)
 }
 else
 {
-perror("enter environment variable and value");
+write(STDERR_FILENO, "setenv: parameters not found\n", 29);
+/*perror("enter environment variable and value");*/
 return (EXIT_FAILURE);
 }
 return (EXIT_SUCCESS);
