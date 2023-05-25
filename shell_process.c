@@ -14,13 +14,6 @@ int sh(char *str, char **args, char **paths, int p_cnt, char *p_path)
 int status = 1;
 char *breaks = " ";
 char *clean_string;
-/*check EOF*/
-if (str == NULL)
-{
-write(STDOUT_FILENO, "\n", 1);
-free_all(args, str, paths);
-exit(EXIT_SUCCESS);
-}
 clean_string = cleanStr(str);
 /*check \n && comment(#)*/
 if (clean_string == NULL)

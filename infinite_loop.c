@@ -19,7 +19,7 @@ exit(EXIT_SUCCESS);
  */
 int infinite_loop(char *program_path)
 {
-int status = 1;
+int status = 0;
 char **args = NULL;
 int proccess_counter = 1;
 char *string = NULL;
@@ -43,5 +43,10 @@ fflush(stdout);
 if (isatty(STDIN_FILENO) != 0)
 write(STDOUT_FILENO, "m$ ", 3);
 }
+/*check EOF*/
+/*the only way you can arrive here with EOF = -1*/
+if (isatty(STDIN_FILENO) != 0)
+write(STDOUT_FILENO, "\n", 1);
+free_all(args, string, paths);
 return (status);
 }

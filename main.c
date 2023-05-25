@@ -11,5 +11,5 @@ int main(__attribute__((unused)) int argc, char **argv)
 int status = 0;
 /*a function that helps me to keep the shell open*/
 status = infinite_loop(argv[0]);
-exit(status);
+return (status);
 }

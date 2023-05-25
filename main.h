@@ -16,7 +16,6 @@ extern char **environ;
 
 int infinite_loop(char *program_path);
 
-/* function to read stander input */
 /* and split arguments && execution the commands*/
 int sh(char *str, char **args, char **paths, int p_cnt, char *p_path);
 
