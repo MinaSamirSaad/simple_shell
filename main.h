@@ -13,6 +13,9 @@
 
 extern char **environ;
 
+/* remove if fail */
+void set_environ(int i, char *arg1, char *arg2);
+
 int infinite_loop(char *program_path);
 
 /* function to read stander input */
