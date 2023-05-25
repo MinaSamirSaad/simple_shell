@@ -12,7 +12,7 @@
 int sh(char *str, char **args, char **paths, int p_cnt, char *p_path)
 {
 int status = 1;
-char *breaks = " \n";
+char *breaks = " ";
 char *clean_string;
 str = get_string();
 /*check EOF*/
