@@ -35,6 +35,7 @@ char *get_string(void);
 char **split(char *string, char *breaks);
 int _atoi(char *s);
 char *cleanStr(char *str);
+ssize_t _getline(char **string, size_t *string_size);
 
 /* environment helper functions*/
 char **get_all_paths(void);

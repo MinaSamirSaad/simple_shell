@@ -7,17 +7,17 @@
  */
 void set_environ(int i, char *arg1, char *arg2)
 {
-	int k;
-	int len1 = _strlen(arg1);
-	int len2 = _strlen(arg2);
+int k;
+int len1 = _strlen(arg1);
+int len2 = _strlen(arg2);
 
-	environ[i] = malloc(len1 + len2 + 2);
-	for (k = 0; k < len1; k++)
-		environ[i][k] = arg1[k];
-	environ[i][k++] = '=';
-	for (; k < len1 + len2 + 2; k++)
-		environ[i][k] = arg2[k - len1 - 1];
-	environ[i][k] = '\0';
+environ[i] = malloc(len1 + len2 + 2);
+for (k = 0; k < len1; k++)
+environ[i][k] = arg1[k];
+environ[i][k++] = '=';
+for (; k < len1 + len2 + 2; k++)
+environ[i][k] = arg2[k - len1 - 1];
+environ[i][k] = '\0';
 }
 /**
  * copy_array_of_strings2 - hard copy
@@ -26,22 +26,23 @@ void set_environ(int i, char *arg1, char *arg2)
  */
 char **copy_array_of_strings2(char **str)
 {
-	char **new_array = NULL;
-	int i = 0;
+char **new_array = NULL;
+int i = 0;
 
-	while (str[i])
-	{
-		i++;
-	}
-	new_array = malloc(sizeof(char *) * (i + 2));
-	i = 0;
-	while (str[i])
-	{
-		new_array[i] = _strcopy(str[i]);
-		i++;
-	}
-	new_array[i + 1] = NULL;
-	return (new_array);
+while (str[i])
+{
+i++;
+}
+new_array = malloc(sizeof(char *) * (i + 2));
+i = 0;
+while (str[i])
+{
+new_array[i] = _strcopy(str[i]);
+i++;
+}
+new_array[i + 1] = NULL;
+free_array_of_pointers(str);
+return (new_array);
 }
 /**
  * set_env_variable - set the environment
@@ -55,29 +56,28 @@ int len1 = 0;
 
 if (arguments[1] != NULL && arguments[2] != NULL)
 {
-	len1 = _strlen(arguments[1]);
-	while (environ[i])
-	{
-		for (j = 0; j < len1; j++)
-		{
-			if (arguments[1][j] != environ[i][j])
-				break;
-		}
-		if (j == len1)
-		{
-			free(environ[i]);
-			set_environ(i, arguments[1], arguments[2]);
-		}
-		i++;
-	}
-	environ = copy_array_of_strings2(environ);
-	set_environ(i, arguments[1], arguments[2]);
+len1 = _strlen(arguments[1]);
+while (environ[i])
+{
+for (j = 0; j <= len1; j++)
+{
+if (arguments[1][j] != environ[i][j])
+break;
+}
+if (j == len1)
+{
+free(environ[i]);
+set_environ(i, arguments[1], arguments[2]);
+break;
+}
+i++;
+}
+environ = copy_array_of_strings2(environ);
+set_environ(i, arguments[1], arguments[2]);
 }
 else
 {
-write(STDERR_FILENO, "setenv: parameters not found\n", 29);
-/*perror("enter environment variable and value");*/
-return (EXIT_FAILURE);
+print_env(arguments);
 }
 return (EXIT_SUCCESS);
 }
@@ -88,12 +88,26 @@ return (EXIT_SUCCESS);
  */
 int unset_env_variable(char **arguments)
 {
+int i = 0, j;
+int len1 = 0;
+
 if (arguments[1] != NULL)
 {
-if (unsetenv(arguments[1]) != 0)
+len1 = _strlen(arguments[1]);
+while (environ[i])
 {
-perror("Failed to unset environment variable");
-return (EXIT_FAILURE);
+for (j = 0; j <= len1; j++)
+{
+if (arguments[1][j] != environ[i][j])
+break;
+}
+if (j == len1)
+{
+free(environ[i]);
+environ = copy_array_of_strings2(environ);
+break;
+}
+i++;
 }
 }
 else
@@ -103,4 +117,3 @@ return (EXIT_FAILURE);
 }
 return (EXIT_SUCCESS);
 }
-
