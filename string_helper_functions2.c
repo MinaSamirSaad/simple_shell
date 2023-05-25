@@ -101,10 +101,11 @@ str = new_str;
  * _getline - Implement the getline function
  * @string: the string pointer to pass the characters to
  * @string_size: number of bytes that readed
+ * Return: the number of bytes read
  */
 ssize_t _getline(char **string, size_t *string_size)
 {
-int buffer_size = 1024, position = 0;
+size_t buffer_size = BUFSIZ, position = 0;
 char *buffer = NULL;
 char c;
 /*handling error*/
