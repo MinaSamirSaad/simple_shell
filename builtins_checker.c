@@ -16,9 +16,11 @@ if (arguments[1])
 {
 arg1_result = _atoi(arguments[1]);
 free_all(arguments, string, paths);
+free_array_of_pointers(environ);
 exit(arg1_result);
 }
 free_all(arguments, string, paths);
+free_array_of_pointers(environ);
 exit(*st);
 }
 }

@@ -82,3 +82,20 @@ full_str[(i + str1_length)+1] = str2[i];
 full_str[str1_length + str2_length + 1] = '\0';
 return (full_str);
 }
+/**
+ * remove_comment - remove comment # from string
+ * @str: string from stander input
+ */
+void remove_comment(char *str)
+{
+int i = 0;
+while (str && str[i] != '\0')
+{
+if (str[i] == ' ' && str[i + 1] == '#')
+{
+str[i] = '\0';
+break;
+}
+i++;
+}
+}

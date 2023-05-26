@@ -9,6 +9,7 @@
 int main(__attribute__((unused)) int argc, char **argv)
 {
 int status = 0;
+environ = copy_array_of_strings(environ);
 /*a function that helps me to keep the shell open*/
 status = infinite_loop(argv[0]);
 return (status);

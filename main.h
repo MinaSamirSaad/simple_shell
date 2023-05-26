@@ -29,6 +29,7 @@ int _strlen(char *str);
 int _strcmp(char *str1, char *str2);
 char *_strconcat(char *str1, char *str2);
 char *_strcopy(char *str);
+void remove_comment(char *str);
 
 /* string helper functions 2*/
 char **split(char *string, char *breaks);
@@ -47,6 +48,7 @@ void execution(char **arguments, int *st);
 /* array helper functions*/
 char **copy_array_of_strings(char **str);
 void free_array_of_pointers(char **array);
+void remove_idx_from_array(int idx, char **array);
 
 /* built in checker */
 void check_exit(char **arguments, char *string, char **paths, int *st);

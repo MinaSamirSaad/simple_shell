@@ -27,15 +27,11 @@ return (EXIT_SUCCESS);
 int set_env(char *key, char *value)
 {
 char **args = NULL;
-int length = _strlen(key);
 args = malloc(3 * sizeof(char *));
-args[1] = malloc((length + 1));
-args[1] = key;
-length = _strlen(value);
-args[2] = malloc((length + 1));
-args[2] = value;
+args[1] = _strcopy(key);
+args[2] = _strcopy(value);
 set_env_variable(args);
-free(value);
+free_array_of_pointers(args);
 return (EXIT_SUCCESS);
 }
 /**
@@ -45,8 +41,8 @@ return (EXIT_SUCCESS);
  */
 int _cd(char **arguments)
 {
-char *pwd;
-char *old_pwd;
+char *pwd = NULL;
+char *old_pwd = NULL;
 
 /* If no directory is provided, change to the home directory*/
 if (arguments[1] == NULL)
@@ -58,14 +54,13 @@ arguments[1] = get_env("HOME");
 if (arguments[1][0] == '-' && arguments[1][1] == '\0')
 {
 arguments[1] = get_env("OLDPWD");
-printf("%s\n", arguments[1]);
 if (!arguments[1])
 {
 write(STDERR_FILENO, &"cd: OLDPWD not set\n", 19);
 return (EXIT_FAILURE);
 }
 }
-old_pwd = getcwd(NULL, 0);
+old_pwd = get_env("PWD");
 set_env("OLDPWD", old_pwd);
 if (chdir(arguments[1]) != 0)
 {
@@ -79,6 +74,7 @@ pwd = getcwd(NULL, 0);
 if (pwd != NULL)
 {
 set_env("PWD", pwd);
+free(pwd);
 return (EXIT_SUCCESS);
 }
 }

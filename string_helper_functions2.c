@@ -69,12 +69,14 @@ char *cleanStr(char *str)
 {
 /* handle new line in begining */
 /* handle # in begining */
+
 if (*str == '\n' || *str == '#')
 {
 return (NULL);
 }
 str[_strlen(str) - 1] = '\0';
-return (strtok(str, "#"));
+remove_comment(str);
+return (str);
 }
 /**
  * string_realloc - reallocate string

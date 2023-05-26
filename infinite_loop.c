@@ -48,5 +48,6 @@ write(STDOUT_FILENO, "m$ ", 3);
 if (isatty(STDIN_FILENO) != 0)
 write(STDOUT_FILENO, "\n", 1);
 free_all(args, string, paths);
+free_array_of_pointers(environ);
 return (status);
 }
