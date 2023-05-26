@@ -1,4 +1,4 @@
-#include"main.h"
+#include "main.h"
 
 /**
  * _strconcat2 - add str2 command to str1 path
@@ -23,8 +23,8 @@ full_str[i++] = ':';
 full_str[i] = ' ';
 
 for (i = 0; i < str2_length; i++)
-full_str[(i + str1_length)+1] = str2[i];
+full_str[(i + str1_length)+2] = str2[i];
 
-full_str[str1_length + str2_length + 1] = '\0';
+full_str[str1_length + str2_length + 2] = '\0';
 return (full_str);
 }

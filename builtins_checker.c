@@ -31,7 +31,7 @@ else
 msg = _strconcat2("Illegal number", args[1]);
 execve_error(msg, args[0], p, pth);
 free(msg);
-*st = EXIT_FAILURE;
+*st = 2;
 return (0);
 }
 }
