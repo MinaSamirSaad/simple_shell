@@ -29,12 +29,15 @@ free_all(args, str, NULL);
 *st = 0;
 return;
 }
-check_exit(args, str, paths, st);
+if (check_exit(args, str, paths, st, p_path, p_cnt) != 0)
+{
 /* builtin checker */
 *st = check_builtin(args);
 if (*st == -1)
 {
 before_exec(args, paths, p_cnt, p_path, st);
 }
+}
+
 free_all(args, str, NULL);
 }

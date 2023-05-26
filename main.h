@@ -37,6 +37,9 @@ int _atoi(char *s);
 char *cleanStr(char *str);
 ssize_t _getline(char **string, size_t *string_size);
 
+/*string helper functions 3*/
+char *_strconcat2(char *str1, char *str2);
+
 /* environment helper functions*/
 char **get_all_paths(void);
 char *get_env(char *string);
@@ -51,7 +54,8 @@ void free_array_of_pointers(char **array);
 void remove_idx_from_array(int idx, char **array);
 
 /* built in checker */
-void check_exit(char **arguments, char *string, char **paths, int *st);
+int check_exit(char **args, char *str, char **paths, int *st,
+char *pth, int p);
 int check_builtin(char **arguments);
 
 /* built in functions*/
@@ -64,8 +68,9 @@ int print_env(char **arguments);
 void free_all(char **arguments, char *string, char **paths);
 
 /*error functions*/
-void execve_error(char *command, int proccess_number, char *program_path);
+void execve_error(char *msg, char *command, int count, char *p_path);
 /*number helper functions*/
 void print_num(unsigned int n);
+int check_positive(char *str);
 
 #endif

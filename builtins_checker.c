@@ -2,27 +2,44 @@
 /**
  * check_exit - check that argument[0] = exit
  * exit with argument[1] if exists
- * @string: input string to shell
- * @arguments: splitted string acc to breaks
+ * @str: input string to shell
+ * @args: splitted string acc to breaks
  * @paths: splitted path from environment
  * @st: status of execution
+ * @p: number of proccess
+ * @pth: the program path
+ * Return: zero if found exit but not true
+ * one if not found
  */
-void check_exit(char **arguments, char *string, char **paths, int *st)
+int check_exit(char **args, char *str, char **paths, int *st, char *pth, int p)
 {
+char *msg = NULL;
 int arg1_result;
-if (_strcmp("exit", arguments[0]) == 0)
+if (_strcmp("exit", args[0]) == 0)
 {
-if (arguments[1])
+if (args[1])
 {
-arg1_result = _atoi(arguments[1]);
-free_all(arguments, string, paths);
+if (check_positive(args[1]) == 0)
+{
+arg1_result = _atoi(args[1]);
+free_all(args, str, paths);
 free_array_of_pointers(environ);
 exit(arg1_result);
 }
-free_all(arguments, string, paths);
+else
+{
+msg = _strconcat2("Illegal number", args[1]);
+execve_error(msg, args[0], p, pth);
+free(msg);
+*st = EXIT_FAILURE;
+return (0);
+}
+}
+free_all(args, str, paths);
 free_array_of_pointers(environ);
 exit(*st);
 }
+return (1);
 }
 
 /**

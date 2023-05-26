@@ -67,7 +67,7 @@ free(fullpath);
 }
 else
 {
-execve_error(args[0], p_cnt, p_path);
+execve_error("not found", args[0], p_cnt, p_path);
 *st = 127;
 return;
 }
