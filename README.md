@@ -70,7 +70,7 @@ Start the app
 ~~~  
 
 ## Screenshots  
-![App Screenshot](https://github.com/MinaSamirSaad/simple_shell/screenshots/screenshots1.png)
+![App Screenshot](https://github.com/MinaSamirSaad/simple_shell/blob/main/Screenshots/screenshots1.png)
 
 
 
